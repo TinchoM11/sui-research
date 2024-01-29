@@ -3,7 +3,6 @@ import { isValidSuiAddress, fromHEX, toHEX } from "@mysten/sui.js/utils";
 import dotenv from "dotenv";
 dotenv.config();
 
-const importedPK = process.env.TINCHO_PK_CHROME as string;
 const createSuiWallet = async () => {
   console.log(`
 ------------------------
@@ -11,8 +10,7 @@ const createSuiWallet = async () => {
   // Creates a SUI Wallet
   console.log("Creating SUI Wallet");
   const keypair = new Ed25519Keypair();
-  console.log("Keypair", keypair);
-  console.log(keypair.export());
+
   const privateKeyHex = Buffer.from(
     keypair.export().privateKey,
     "base64"
@@ -24,6 +22,8 @@ const createSuiWallet = async () => {
 ------------------------
 `);
   console.log("Check if is a Valid Sui Address");
+  const isValid = isValidSuiAddress(address);
+  console.log("Is Valid Sui Address", isValid, "type", typeof isValid);
   console.log("Sui Address is Valid", isValidSuiAddress(address));
   console.log(
     `Check if EVM Chain is Valid on SUI:`,

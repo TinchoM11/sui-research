@@ -6,13 +6,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Address: 0x9a7791f7461bca43092f06bd93849a9fe54740f7d6f39f8bf97ac163515f4a17
-const TESTNET_PK = process.env.TESTNET_PK as string;
+const PK = process.env.TINCHO_PK_CHROME as string;
 
 // We can connect to "mainnet", "testnet", or "devnet"
-const suiClient = new SuiClient({ url: getFullnodeUrl("testnet") });
+const suiClient = new SuiClient({ url: getFullnodeUrl("mainnet") });
 
 const sendSuiNative = async () => {
-  const keypair = Ed25519Keypair.fromSecretKey(fromHEX(TESTNET_PK));
+  const keypair = Ed25519Keypair.fromSecretKey(fromHEX(PK));
   const sender = keypair.toSuiAddress();
   console.log("Sender", sender);
 
@@ -24,10 +24,10 @@ const sendSuiNative = async () => {
   await tx.build({ client: suiClient });
 
   // We set how much SUI we want to send (is the gas coin)
-  const [coin] = tx.splitCoins(tx.gas, [50000000]);
+  const [coin] = tx.splitCoins(tx.gas, [100000000]);
   tx.transferObjects(
     [coin],
-    "0x2b2f651080c94524ea58d73bf17b2624114494184bee564b42455bc2865b628c"
+    "0x5380226d954d1f522835d230219efb162e8df167a7a56498976c55a72e18a477"
   );
 
   // Check Liveness with checkpoints

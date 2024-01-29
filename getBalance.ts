@@ -50,7 +50,6 @@ const getAllBalances = async () => {
   // We can connect to "mainnet", "testnet", or "devnet"
   const suiClient = new SuiClient({ url: getFullnodeUrl("mainnet") });
 
-  // store the JSON representation for the SUI the address owns before using faucet
   const allBalances: suiBalanceResponse[] = await suiClient.getAllBalances({
     owner: suiUserAddress,
   });

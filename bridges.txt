@@ -1,0 +1,12 @@
+For bridges we can use:
+- Wormhole
+It's a good option, but it bridges WormholeUSDC. This will make us to make a swap after the bridge is executed
+
+- SWFT
+It allows us to bridge USDC or SUI Native token.
+The "bad" part is that min. amounts are around 35/40 dollars sometimes.
+
+- STEALTHEX
+It bridges to SUI token.
+Min. amounts are between 5/15 USD.
+The "bad" part is the bridge itself, it's not a blockchain-based bridge.

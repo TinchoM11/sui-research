@@ -9,10 +9,10 @@ dotenv.config();
 const TESTNET_PK = process.env.TESTNET_PK as string;
 
 // It's similar the the tx hash on Ethereum
-const digestExample = "ACLfYoDeQnpdfphrTx52w8Brwd8PT3LqreuWWAeGDU87";
+const digestExample = "G4pPim5wQrVwBAZfdkY9qZySij54yFU3W7L4a4WDRsva";
 
 // We can connect to "mainnet", "testnet", or "devnet"
-const suiClient = new SuiClient({ url: getFullnodeUrl("testnet") });
+const suiClient = new SuiClient({ url: getFullnodeUrl("mainnet") });
 
 const getTxInfo = async () => {
   const object = await suiClient.getTransactionBlock({
@@ -25,7 +25,7 @@ const getTxInfo = async () => {
       showBalanceChanges: true,
     },
   });
-
+  console.log(JSON.stringify(object, null, 2))
   const status = object.effects?.status.error
     ? "Failure"
     : object.effects?.status.status === "success"
